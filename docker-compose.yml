@@ -1,7 +1,7 @@
 version: '3'
 services:
   microWeb:
-    build: jparedeshub/microweb:latest
+    image: jparedeshub/microweb:latest
     ports:
       - "8181:80"
     depends_on:
@@ -9,7 +9,7 @@ services:
       - productos
       - ordenes
   usuarios:
-    build: jparedeshub/usuarios:latest
+    image: jparedeshub/usuarios:latest
     ports:
       - "3001:3001"
     depends_on:
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./usuarios/db:/var/lib/mysql
   productos:
-    build: jparedeshub/productos:latest
+    image: jparedeshub/productos:latest
     ports:
       - "3002:3002"
     depends_on:
@@ -39,7 +39,7 @@ services:
     volumes:
       - ./productos/db:/var/lib/mysql
   ordenes:
-    build: jparedeshub/ordenes:latest
+    image: jparedeshub/ordenes:latest
     ports:
       - "3003:3003"
     depends_on:
