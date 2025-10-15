@@ -52,7 +52,7 @@ if ($us==""){
     </thead>
     <tbody>
     <?php
-        $servurl="http://localhost:3001/usuarios";
+        $servurl="http://usuarios:3001/usuarios";
         $curl=curl_init($servurl);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
