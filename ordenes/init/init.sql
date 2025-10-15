@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS ordenes_db;
-USE ordenes_db;
-
 CREATE TABLE ordenes (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombreCliente VARCHAR(100),
