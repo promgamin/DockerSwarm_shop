@@ -23,6 +23,7 @@ services:
       - MYSQL_DATABASE=usuarios_db
     volumes:
       - ./usuarios/db:/var/lib/mysql
+      - ./usuarios/init:/docker-entrypoint-initdb.d
   productos:
     image: jparedeshub/productos:latest
     ports:
@@ -38,6 +39,7 @@ services:
       - MYSQL_DATABASE=productos_db
     volumes:
       - ./productos/db:/var/lib/mysql
+      - ./productos/init:/docker-entrypoint-initdb.d
   ordenes:
     image: jparedeshub/ordenes:latest
     ports:
@@ -55,3 +57,4 @@ services:
       - MYSQL_DATABASE=ordenes_db
     volumes:
       - ./ordenes/db:/var/lib/mysql
+      - ./ordenes/init:/docker-entrypoint-initdb.d
