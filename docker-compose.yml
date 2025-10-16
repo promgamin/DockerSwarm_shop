@@ -4,16 +4,26 @@ services:
     image: jparedeshub/microweb:latest
     ports:
       - "8181:80"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu2
     depends_on:
       - usuarios
       - productos
       - ordenes
+
   usuarios:
     image: jparedeshub/usuarios:latest
     ports:
       - "3001:3001"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
     depends_on:
       - db_usuarios
+
   db_usuarios:
     image: mysql:8.0
     ports:
@@ -23,12 +33,22 @@ services:
       - MYSQL_DATABASE=usuarios_db
     volumes:
       - ./usuarios/db:/var/lib/mysql
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
+
   productos:
     image: jparedeshub/productos:latest
     ports:
       - "3002:3002"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
     depends_on:
       - db_productos
+
   db_productos:
     image: mysql:8.0
     ports:
@@ -38,14 +58,24 @@ services:
       - MYSQL_DATABASE=productos_db
     volumes:
       - ./productos/db:/var/lib/mysql
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
+
   ordenes:
     image: jparedeshub/ordenes:latest
     ports:
       - "3003:3003"
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
     depends_on:
       - usuarios
       - productos
       - db_ordenes
+
   db_ordenes:
     image: mysql:8.0
     ports:
@@ -55,3 +85,7 @@ services:
       - MYSQL_DATABASE=ordenes_db
     volumes:
       - ./ordenes/db:/var/lib/mysql
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu1
