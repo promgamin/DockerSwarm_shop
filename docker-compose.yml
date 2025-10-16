@@ -92,3 +92,15 @@ services:
       placement:
         constraints:
           - node.hostname == servidorUbuntu1
+    
+  haproxy:
+    image: jparedeshub/haproxy-swarm:latest
+    ports:
+      - "8282:8282"   # Puerto HTTP principal
+      - "3080:3080"   # Panel de estadísticas
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == servidorUbuntu2
+    depends_on:
+      - microWeb
