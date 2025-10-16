@@ -32,7 +32,8 @@ services:
       - MYSQL_ROOT_PASSWORD=mysql
       - MYSQL_DATABASE=usuarios_db
     volumes:
-      - ./usuarios/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/usuarios/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/usuarios/init/init.sql:/docker-entrypoint-initdb.d/init.sql
     deploy:
       placement:
         constraints:
@@ -57,7 +58,8 @@ services:
       - MYSQL_ROOT_PASSWORD=mysql
       - MYSQL_DATABASE=productos_db
     volumes:
-      - ./productos/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/productos/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/productos/init/init.sql:/docker-entrypoint-initdb.d/init.sql
     deploy:
       placement:
         constraints:
@@ -84,7 +86,8 @@ services:
       - MYSQL_ROOT_PASSWORD=mysql
       - MYSQL_DATABASE=ordenes_db
     volumes:
-      - ./ordenes/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/ordenes/db:/var/lib/mysql
+      - /home/vagrant/DockerSwarm_shop/ordenes/init/init.sql:/docker-entrypoint-initdb.d/init.sql
     deploy:
       placement:
         constraints:
