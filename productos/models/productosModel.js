@@ -2,6 +2,7 @@ const mysql = require('mysql2/promise');
 
 const connection = mysql.createPool({
     host: 'db_productos',
+    port: 3306,
     user: 'root',
     password: 'mysql',
     database: 'productos_db'
